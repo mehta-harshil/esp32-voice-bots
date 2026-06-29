@@ -1,3 +1,4 @@
+import os
 import json
 import asyncio
 import io
@@ -26,7 +27,8 @@ except Exception as e:
 # ---------------------------------------------------------
 # KITCHEN DASHBOARD INITIALIZATION
 # ---------------------------------------------------------
-DASHBOARD_FILE = "manager_dashboard.html"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DASHBOARD_FILE = os.path.join(BASE_DIR, "manager_dashboard.html")
 
 def init_dashboard():
     html_content = """<!DOCTYPE html>
@@ -375,7 +377,7 @@ async def process_llm_worker(table_id: str):
             manager.audio_ready[table_id] = wav_io.getvalue()
             
             # --- DEBUG EXPORT ---
-            debug_filename = f"debug_server_audio_{table_id}.wav"
+            debug_filename = os.path.join(BASE_DIR, f"debug_server_audio_{table_id}.wav")
             with open(debug_filename, "wb") as f:
                 f.write(manager.audio_ready[table_id])
             print(f"[{table_id}] 💾 Saved assembled server audio to '{debug_filename}' for playback debugging!")
@@ -407,7 +409,7 @@ async def process_audio_worker(table_id: str, raw_pcm_bytes: bytes):
         print(f"[{table_id}] 🎙️ Transcribing audio...")
         
         # --- DEBUG EXPORT ---
-        debug_filename = f"debug_mic_{table_id}.wav"
+        debug_filename = os.path.join(BASE_DIR, f"debug_mic_{table_id}.wav")
         with wave.open(debug_filename, "wb") as wav_file:
             wav_file.setnchannels(1)
             wav_file.setsampwidth(2)

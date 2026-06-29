@@ -1,6 +1,7 @@
 import sounddevice as sd
 import queue
 import sys
+import os
 import json
 from vosk import Model, KaldiRecognizer
 
@@ -17,8 +18,10 @@ def audio_callback(indata, frames, time, status):
 
 # 3. Load the Vosk Model
 print("Loading Real-Time Model...")
-# Make sure your extracted model folder is named "model" and is in the same directory
-model = Model("model") 
+# Use os.path to correctly resolve the models/model path from the project root
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_DIR = os.path.join(os.path.dirname(BASE_DIR), "models", "model")
+model = Model(MODEL_DIR) 
 recognizer = KaldiRecognizer(model, 16000)
 
 print("\n🎤 REAL-TIME TRANSCRIPTION ACTIVE (Speak now, press Ctrl+C to stop) 🎤\n")

@@ -9,6 +9,8 @@ import pygame
 import os
 import time
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 print("Initializing Neural Audio Player...")
 pygame.mixer.init()
 
@@ -176,7 +178,7 @@ async def audio_player_task():
 # Generator task that creates MP3s and returns the filename
 async def generate_audio_task(text, chunk_index):
     voice = "en-IN-PrabhatNeural"
-    audio_file = f"temp_response_{chunk_index}.mp3"
+    audio_file = os.path.join(BASE_DIR, f"temp_response_{chunk_index}.mp3")
     
     communicate = edge_tts.Communicate(text, voice, rate='+42%')
     await communicate.save(audio_file)
