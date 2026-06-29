@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PIDPEN Kitchen Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+        #orders-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .order-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .order-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: #ff4757;
+        }
+        .order-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        .table-badge {
+            background: #ff4757;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .item-name {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #ffa502;
+            margin: 0 0 10px 0;
+        }
+        .qty {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #dfe4ea;
+        }
+        .extra-info {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-style: italic;
+            color: #7bed9f;
+        }
+    </style>
+</head>
+<body>
+    <h1>👨‍🍳 Active Kitchen Orders</h1>
+    <div id="orders-container">
