@@ -1,0 +1,76 @@
+# Python Environment & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables
+.env
+.env.local
+
+# refernce ignore
+reference/bin/
+reference/*.zst
+
+# Arduino / ESP32 Build Files
+esp32_client/build/
+*.elf
+*.bin
+*.map
+*.hex
+*.a
+*.o
+*.out
+*.zst
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Project-Specific Debug Files
+# Ignore any dynamically generated debug audio files
+debug_mic_*.wav
+debug_server_audio_*.wav
+*.mp3
+*.wav
+
+# Logs
+*.log
+
+# AI Models & Weights
+model/
+models/
+
+
